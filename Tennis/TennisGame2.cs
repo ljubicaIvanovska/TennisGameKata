@@ -35,12 +35,7 @@ namespace Tennis
 
             if (p1point > 0 && p2point == 0)
             {
-                if (p1point == 1)
-                    p1res = "Fifteen";
-                if (p1point == 2)
-                    p1res = "Thirty";
-                if (p1point == 3)
-                    p1res = "Forty";
+                p1res = ResultPointLessThan3(p1point);
 
                 p2res = "Love";
                 score = p1res + "-" + p2res;
@@ -102,6 +97,17 @@ namespace Tennis
                 score = "Win for player2";
             }
             return score;
+        }
+
+        private string ResultPointLessThan3(int p1point)
+        {
+            if (p1point == 1)
+                p1res = "Fifteen";
+            if (p1point == 2)
+                p1res = "Thirty";
+            if (p1point == 3)
+                p1res = "Forty";
+            return p1res;
         }
 
         public void SetP1Score(int number)
