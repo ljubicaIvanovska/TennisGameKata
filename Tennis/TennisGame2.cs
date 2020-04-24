@@ -35,14 +35,14 @@ namespace Tennis
 
             if (p1point > 0 && p2point == 0)
             {
-                p1res = ResultPointLessThan3(p1point);
+                p1res = ResultForPointPointLessThan3(p1point);
 
                 p2res = "Love";
                 score = p1res + "-" + p2res;
             }
             if (p2point > 0 && p1point == 0)
             {
-                p2res = ResultPointLessThan3(p2point);
+                p2res = ResultForPointPointLessThan3(p2point);
 
                 p1res = "Love";
                 score = p1res + "-" + p2res;
@@ -54,10 +54,12 @@ namespace Tennis
                     p1res = "Thirty";
                 if (p1point == 3)
                     p1res = "Forty";
+
                 if (p2point == 1)
                     p2res = "Fifteen";
                 if (p2point == 2)
                     p2res = "Thirty";
+                
                 score = p1res + "-" + p2res;
             }
             if (p2point > p1point && p2point < 4)
@@ -66,10 +68,12 @@ namespace Tennis
                     p2res = "Thirty";
                 if (p2point == 3)
                     p2res = "Forty";
+                
                 if (p1point == 1)
                     p1res = "Fifteen";
                 if (p1point == 2)
                     p1res = "Thirty";
+                
                 score = p1res + "-" + p2res;
             }
 
@@ -94,13 +98,13 @@ namespace Tennis
             return score;
         }
 
-        private string ResultPointLessThan3(int p1point)
+        private string ResultForPointPointLessThan3(int point)
         {
-            if (p1point == 1)
+            if (point == 1)
                 p1res = "Fifteen";
-            if (p1point == 2)
+            if (point == 2)
                 p1res = "Thirty";
-            if (p1point == 3)
+            if (point == 3)
                 p1res = "Forty";
             return p1res;
         }
