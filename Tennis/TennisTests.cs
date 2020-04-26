@@ -63,14 +63,6 @@ namespace Tennis
             CheckAllScores(game);
         }
 
-
-        [Test]
-        public void CheckTennisGame2Refactor()
-        {
-            var game = new TennisGame2Refactor("player1", "player2");
-            CheckAllScores(game);
-        }
-
         [Test]
         public void CheckTennisGame3()
         {
