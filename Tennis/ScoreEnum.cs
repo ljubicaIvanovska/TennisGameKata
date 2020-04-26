@@ -7,7 +7,7 @@ namespace Tennis
     public enum ScoreEnum
     {
         Love,
-        Fifteeen,
+        Fifteen,
         Thirty,
         Forty
     }
