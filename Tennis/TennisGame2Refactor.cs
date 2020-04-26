@@ -45,16 +45,16 @@ namespace Tennis
 
             return score;
         }
-        private string GetScorePointsSame(int maxScore)
+        private string GetScorePointsSame(int equalScore)
         {
             string score;
-            if (maxScore >= 3)
+            if (equalScore >= 3)
             {
                 score = "Deuce";
             }
             else
             {
-                score = $"{Enum.GetName(typeof(ScoreEnum), maxScore)}-All";
+                score = $"{Enum.GetName(typeof(ScoreEnum), equalScore)}-All";
             }
             return score;
         }
