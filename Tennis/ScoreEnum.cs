@@ -9,6 +9,6 @@ namespace Tennis
         Love,
         Fifteeen,
         Thirty,
-        Fourty
+        Forty
     }
 }

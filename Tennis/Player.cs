@@ -14,9 +14,5 @@ namespace Tennis
         {
             Name = name;
         }
-        public void WonPoint()
-        {
-            Score++;
-        }
     }
 }

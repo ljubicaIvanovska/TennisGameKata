@@ -5,23 +5,14 @@ namespace Tennis
 {
     public class TennisGame2Refactor : ITennisGame
     {
-        private int p1point;
-        private int p2point;
-
         private int maxScore;
-
-        private string p1res = "";
-        private string p2res = "";
-        private string player1Name;
-        private string player2Name;
-
-        private Player player1;
-        private Player player2;
+        private Player _player1;
+        private Player _player2;
 
         public TennisGame2Refactor(Player player1, Player player2)
         {
-            player1 = player1;
-            player2 = player2;
+            _player1 = player1;
+            _player2 = player2;
         }
 
         public void WonPoint(string playerName)
@@ -38,7 +29,7 @@ namespace Tennis
 
             if (leadPlayer.PointDifference == 0)
             {
-                score = GetScoreDeushe();
+                score = GetScorePointsSame(maxScore);
             }
             else
             {
@@ -54,40 +45,50 @@ namespace Tennis
 
             return score;
         }
-        private string GetScoreDeushe()
-        {   return "Deuce";
+        private string GetScorePointsSame(int maxScore)
+        {
+            string score;
+            if (maxScore >= 3)
+            {
+                score = "Deuce";
+            }
+            else
+            {
+                score = $"{Enum.GetName(typeof(ScoreEnum), maxScore)}-All";
+            }
+            return score;
         }
         private string GetScoreOneToThree()
         {
-            return $"{Enum.GetName(typeof(ScoreEnum), player1.Score)}-{Enum.GetName(typeof(ScoreEnum), player2.Score)}";
+            return $"{Enum.GetName(typeof(ScoreEnum), _player1.Score)}-{Enum.GetName(typeof(ScoreEnum), _player2.Score)}";
         }
 
         private string GetScoreFourAndUp(Player leadPlayer)
         {
             string score;
-            score = leadPlayer.PointDifference >= 2 ? $"Win for player {leadPlayer.Name}" 
-                : $"Advantage player {leadPlayer.Name}";
+            score = leadPlayer.PointDifference >= 2 ? $"Win for {leadPlayer.Name}" 
+                : $"Advantage {leadPlayer.Name}";
             return score;
         }
 
         private Player SetLeadPlayer()
         {
             Player leadPlayer;
-            if (player1.Score > player2.Score)
+            if (_player1.Score > _player2.Score)
             {
-                leadPlayer = player1;
+                leadPlayer = _player1;
             }
             else
             {
-                leadPlayer = player2;
+                leadPlayer = _player2;
             }
-            leadPlayer.PointDifference = Math.Abs(player1.Score - player2.Score);
+            leadPlayer.PointDifference = Math.Abs(_player1.Score - _player2.Score);
             maxScore = leadPlayer.Score;
             return leadPlayer;
         }
         public void WonPoint(Player player)
         {
-            player.WonPoint();
+            player.Score++;
         }
 
     }

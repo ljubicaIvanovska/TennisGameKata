@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Tennis
 {
-    [TestFixture( 0,  0, "Love-All")]
+    
     [TestFixture( 1,  1, "Fifteen-All")]
     [TestFixture( 2,  2, "Thirty-All")]
     [TestFixture( 3,  3, "Deuce")]
@@ -41,9 +41,12 @@ namespace Tennis
         private readonly string expectedScore;
         private Player player1 = new Player("player1");
         private Player player2 = new Player("player2");
+        private readonly int player1Score;
+        private readonly int player2Score;
         public TennisTestsGameRefactor(int player1Score, int player2Score, string expectedScore)
-        {   player1.Score = player1Score;
-            player2.Score = player2Score;
+        {
+            this.player1Score = player1Score;
+            this.player2Score = player2Score;
             this.expectedScore = expectedScore;
         }
 
@@ -57,12 +60,12 @@ namespace Tennis
 
         private void CheckAllScores(ITennisGame game)
         {
-            var highestScore = Math.Max(player1.Score, player2.Score);
+            var highestScore = Math.Max(this.player1Score, this.player2Score);
             for (var i = 0; i < highestScore; i++)
             {
-                if (i < player1.Score)
+                if (i < this.player1Score)
                     game.WonPoint(player1);
-                if (i < player2.Score)
+                if (i < this.player2Score)
                     game.WonPoint(player2);
             }
             Assert.AreEqual(this.expectedScore, game.GetScore());
@@ -76,7 +79,7 @@ namespace Tennis
     //    [Test]
     //    public void CheckGame2Refactor()
     //    {
-    //        var game = new TennisGame2Refactor(player1,player2);
+    //        var game = new TennisGame2Refactor(new Player("player1"), new Player("player2"));
     //        RealisticTennisGame(game);
     //    }
 
