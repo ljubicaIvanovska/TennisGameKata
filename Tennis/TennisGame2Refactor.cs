@@ -16,10 +16,27 @@ namespace Tennis
         public TennisGame2Refactor(string player1Name, string player2Name)
         {
             this.player1Name = player1Name;
-            this.player1 = new Player(player1Name);
             p1point = 0;
             this.player2Name = player2Name;
-            this.player2 = new Player(player2Name);
+        }
+        public TennisGame2Refactor(Player player1, Player player2)
+        {
+            this.player1Name = player1.Name;
+            this.player2Name = player2.Name;
+        }
+
+        public void WonPoint(string playerName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        public string GetScore2()
+        {
+            var score = "";
+
+
+            return score;
         }
 
         public string GetScore()
@@ -109,32 +126,9 @@ namespace Tennis
             return score;
         }
 
-        /*
-        public void SetP2Score(int number)
+        public void WonPoint(Player player)
         {
-            for (var i = 0; i < number; i++)
-            {
-                P2Score();
-            }
-        }
-*/
-
-        private void P1Score()
-        {
-            p1point++;
-        }
-
-        private void P2Score()
-        {
-            p2point++;
-        }
-
-        public void WonPoint(string player)
-        {
-            if (player == "player1")
-                P1Score();
-            else
-                P2Score();
+            player.WonPoint();
         }
 
     }

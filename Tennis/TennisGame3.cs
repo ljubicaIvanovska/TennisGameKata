@@ -13,6 +13,11 @@ namespace Tennis
             this.p2N = player2Name;
         }
 
+        public void WonPoint(Player playerName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string GetScore()
         {
             string s;

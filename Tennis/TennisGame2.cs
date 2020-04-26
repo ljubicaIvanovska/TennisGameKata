@@ -17,6 +17,11 @@ namespace Tennis
             this.player2Name = player2Name;
         }
 
+        public void WonPoint(Player playerName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string GetScore()
         {
             var score = "";

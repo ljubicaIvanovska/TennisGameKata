@@ -6,13 +6,17 @@ namespace Tennis
 {
     public class Player
     {
-        private string _name = "";
-        private int _point = 0;
+        public string Name = "";
+        public int Score = 0;
         private int _pointDifference = 0;
 
         public Player(string name)
         {
-            _name = name;
+            Name = name;
+        }
+        public void WonPoint()
+        {
+            Score++;
         }
     }
 }
