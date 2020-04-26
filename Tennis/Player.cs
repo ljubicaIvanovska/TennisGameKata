@@ -8,7 +8,7 @@ namespace Tennis
     {
         public string Name = "";
         public int Score = 0;
-        private int _pointDifference = 0;
+        public int PointDifference = 0;
 
         public Player(string name)
         {

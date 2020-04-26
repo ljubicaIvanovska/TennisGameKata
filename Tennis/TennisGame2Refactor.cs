@@ -1,9 +1,14 @@
+using System;
+using NUnit.Framework;
+
 namespace Tennis
 {
     public class TennisGame2Refactor : ITennisGame
     {
         private int p1point;
         private int p2point;
+
+        private int maxScore;
 
         private string p1res = "";
         private string p2res = "";
@@ -34,9 +39,57 @@ namespace Tennis
         public string GetScore2()
         {
             var score = "";
+            // Set Lead Player and point difference
+            Player leadPlayer = SetLeadPlayer();
 
+            if (leadPlayer.PointDifference == 0)
+            {
+                score = GetScoreDeushe();
+            }
+            else
+            {
+                if (leadPlayer.PointDifference >= 1 && maxScore >= 4)
+                {
+                    score = GetScoreFourAndUp();
+                }
+                else
+                {
+                    score = GetScoreOneToThree();
+                }
+            }
 
             return score;
+        }
+        private string GetScoreDeushe()
+        {   return "Deuce";
+        }
+        private string GetScoreOneToThree()
+        {
+            string score = "";
+            return score;
+        }
+
+        private string GetScoreFourAndUp()
+        {
+            string score = "";
+            return score;
+        }
+
+        private Player SetLeadPlayer()
+        {
+            Player leadPlayer;
+            if (player1.Score > player2.Score)
+            {
+                leadPlayer = player1;
+            }
+            else
+            {
+                leadPlayer = player2;
+            }
+            leadPlayer.PointDifference = Math.Abs(player1.Score - player2.Score);
+
+            maxScore = leadPlayer.Score;
+            return leadPlayer;
         }
 
         public string GetScore()
